@@ -1,1 +1,1 @@
-{"working directory": "/home/ashu/Desktop", "api key": "AIzaSyCO-_NZfZMtBrngJTYbBKWV-zcaL3FePxY", "languages": {"english": "en-IN", "hindi": "hi-IN"}, "audio threshold": 500}
+{ "api key": "NONE", "languages": {"english": "en-IN", "hindi": "hi-IN"}, "audio threshold": 500}
