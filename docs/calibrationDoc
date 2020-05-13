@@ -1,0 +1,5 @@
+'audioCalibration' is a python program that will detect silence threshold of the environment and update it in the 'speech_google_config.txt' file. To use this program the user must ensure that 'speech_google_config.txt' file is in the same directory as the program itselff.
+
+
+
+

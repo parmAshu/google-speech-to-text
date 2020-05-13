@@ -1,0 +1,83 @@
+This module provides interferace to the google cloud platform's speech recognition api. 
+
+IMPORTANT POINTS:
+
+1. Google Cloud Speech Recognition API need an API Key for authentication of the requesting device
+2. This API key must be stored in the 'speech_google_config.txt' against the 'api key' field.
+3. The API key is generated on the google cloud platform and provided with appropriate permissions for the speech recognition process.
+   ( For more information on the google speech recognition api, refer to the google cloud platform's official documentation)
+
+THE MODULE LAYOUT:
+
+speech_google
+|
+|
+|      
+|___speech
+|   | TYPE: CLASS
+|   | DESCIPTION: This class contains the functions to communicate will the google cloud platform speech api. This class has functions to 
+|   |             perform speech recognition using google cloud speech api.
+|   |             (For more information on these actions see the google cloud speech api documentation)
+|   |
+|   |
+|   |___ _URL,_RESOURCE,_HEADERS
+|   |      TYPE: CLASS VARIABLEs
+|   |      DESCRIPTION: These variables hold google speech api SERVICE endpoint. These are used when making https resquests to perform
+|   |                   speech recognition when using the module. If you provide incorrect api key 'speech_google_config.txt' file
+|   |                   the servers will respond with an error code which will be reflected by the function's return value 0.
+|   |
+|   |___ code
+|   |      TYPE: CLASS VARIABLE
+|   |      DEFAULT VALUE: It is assigned the value in the language parameter of the class constructor.
+|   |      DESCRIPTION: This variable contains the google language code of language in which the user will communicate with the system
+|   |                   It's value is extracted from the speech_google_config.txt file. 
+|   |
+|   |
+|   |___ responseString
+|   |      TYPE: CLASS VARIABLE
+|   |      DEFAULT VALUE: as returned by processString function
+|   |      DESCRIPTION: This variable holds the response String returned by GCP speech api after calling the sendAudio() function. 
+|   |
+|   |______ response
+|   |        TYPE: CLASS VARIABLE
+|   |        DEFAULT VALUE: as returned by processString function
+|   |        DESCRIPTION: This variable is a python3 list of words in the response String returned by GCP speech api after calling the 
+|   |                     sendAudio() function. 
+|   |
+|   |___  __init__()
+|   |       TYPE: CLASS CONSTRUCTOR
+|   |       PARAMETER: 
+|   |         1. languages
+|   |              DESCRIPTION: This variable holds the language code of the language to used. Language codes can be determined from google
+|   |                           Speech API documentation.
+|   |
+|   |         2. apiKey
+|   |              DESCRIPTION: This variable holds the speech api registered on your google cloud project. Correct Key should be passed to 
+|   |                           to the constructor otherwise the module will fail 
+|   |
+|   |___ sendAudio()
+|          TYPE: CLASS MEMBER FUNCTION
+|          PARAMETER:
+|            1. audiodata : this is bytes type string containing the audio data encoded in wav format
+|          RETURNS:
+|            0 if there is some error in making the https request
+|              if server responds with error
+|              if the response is of non stantard format
+|            <text from audio> if everthing goes fine and there are no errors. The results from server are stored in 'response' and 
+|                              'responseString' variables.
+|          DESCRIPTION: This function accepts a bytes type audio data string, reads it's data bytes and sends it to the google cloud 
+|                       platform speech api to convert it to text. If the server does not respond with an error message and
+|                       everything goes fine then, the response and responseString class variables will store the text conversion.
+|
+|
+|
+|___ processString()
+       TYPE: FUNCTION
+       PARAMETER:
+         1. st : a string variable
+       RETURNS:
+         (["failed"],"failed") if the string is not is the standard google speech api response format
+         ([list of words in response text], response text) if everything goes fine
+         
+
+USAGE: It is recommended to create a global object of this class and call the sendAudio() function whenever the ocr is required.

@@ -1,0 +1,21 @@
+
+
+audioCalibrate.py      wav_handler    audio_player      speech_google    
+       |                  |                |                  |
+       |                  |                |                  |
+       |                  |                |                  |
+       |                  |                |                  |
+       v                  |                |                  |
+not imported by           |                |                  |
+any other module.         |                |                  |
+It is run                 |                |                  | 
+independently             |                |                  |
+to record the              \               |                 /
+silence threshold.          \              |                /
+It needs the                 \             |               /
+configuration file            \____________|______________/
+to save changes.                           |
+                                           |
+                                           |
+                                           V
+This is the main module              speech_to_text

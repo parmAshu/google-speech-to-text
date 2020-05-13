@@ -1,0 +1,45 @@
+This module provides interferace to the google cloud platform's speech recognition api. 
+
+IMPORTANT POINTS:
+
+1. Google Cloud Speech Recognition API need an API Key for authentication of the requesting device
+2. This API key must be stored in the 'speech_google_config.txt' against the 'api key' field.
+3. The API key is generated on the google cloud platform and provided with appropriate permissions for the speech recognition process.
+   ( For more information on the google speech recognition api, refer to the google cloud platform's official documentation)
+
+THE MODULE LAYOUT:
+
+speech_google
+|
+|___ languages
+|      TYPE: GLOBAL VARIABLE
+|      DEFAULT VALUE: it is initialsed with values read from the configuration file
+|      DESCRIPTION: This variable is a dictionary that holds languages supported by system and their respective codes as specified by google.
+|                   It is important that the user stores correct language and language codes in the configuration file otherwise the module
+|                   will not work.
+|
+|___ _KEY
+|      TYPE: GLOBAL VARIABLE
+|      DEFAULT VALUE: it is initialized with value read from the configuration file
+|      DESCRIPTION: This variable holds the speech api key registered on your google cloud project. The key is extracted from the configuration 
+|                   file accompanying the module.
+|      
+|___ _THRESHOLD
+|      TYPE: GLOBAL VARIABLE
+|      DEFAULT VALUE: it is initialized with value read from the configuration file
+|      DESCRIPTION: This variable holds the threshold value above which the audio will be considered as speech. This varaible is used by the 
+|                   isSilence function when listening to the user.
+|
+|___ getSpeech()
+       TYPE: FUNCTION
+       PARAMETERS:
+         1. language : this is the language in which the user would be speaking
+         2. seconds : this is minimum time for which the system will listen to the user
+         3. extension : this is the number of maximum number of 4 second periods for which the system will listen after the fixed listen time
+                        has elapsed 
+       RETURNS:
+         0 if there is some audio recording error
+         0 if the audio could not be converted to text
+         <response text> if everything is fine
+
+USAGE: 
