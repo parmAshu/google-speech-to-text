@@ -5,7 +5,7 @@ wget -q --spider https://google.com
 
 echo "CONNECTION TEST EXIT STATUS - $?"
 
-if [ $? -eq 0]; then
+if [ $? -eq 0 ]; then
 
   echo "INSTALLING..."
   sleep 3
